@@ -28,7 +28,8 @@ jobs:
 
       - name: Run tests with pytest
         run: |
-          pytest app/test_app.py --maxfail=1 --disable-warnings
+          export PYTHONPATH=$PYTHONPATH:$(pwd)/app
+          pytest app/tests/ --maxfail=1 --disable-warnings
 
       - name: Stop if tests fail
         if: failure()
